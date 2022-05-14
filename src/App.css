@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --primery-color: #070707;
+        --second-color: #ff2e43;
+        --nav-text-color: #8f8f8f;
+        --text-color :#8c8c8c;
+        --black-three: #222222;
+        --divide-color: #efefef;
+    }
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+* {
+    font-family: 'Montserrat','Extrabold', sans-serif;
+}
+.movie-modal::-webkit-scrollbar {
+    display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Hide scrollbar for IE, Edge and Firefox */
+.movie-modal {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.movie-item__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: transparent;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+.movie-item__badge {
+    position: absolute;
+    left: 10px;
+    width: 30px;
+    height: 0;
+    background: var(--second-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11;
+    color: white;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+.movie-item__badge::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    transform: translateY(-30px);
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 12px solid var(--second-color);
+    transition: all 0.5s ease;
+
 }
 
-.App-link {
-  color: #61dafb;
+.movie-item__img img {
+    transition: all 0.5s ease;
 }
+.movie-item__img:hover .movie-item__badge::after {
+    transform: translateY(0);
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.movie-item__img:hover .movie-item__badge {
+    height: 30px;
+    opacity: 1;
+}
+.movie-item__img:hover img{
+    transform: scale(1.1);
+}
+.movie-item__img:hover .movie-item__bg {
+    background-color: rgba(0, 0, 0, 0.5);
+
 }
