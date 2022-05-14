@@ -78,6 +78,7 @@ function HomePage() {
   const [pageNumber, setPageNumber] = useState(2)
   const {movies, hasMore, loading, error} = ScrollMovies(pageNumber)
   const observer = useRef()
+  const videoRef = useRef()
 
   const fetchApi = async () => {
     const {data} = await axios.get(`${process.env.REACT_APP_BE_URL}/movie/top_rated`,{
@@ -213,32 +214,36 @@ function HomePage() {
             
           </div>
           <div className='flex flex-row flex-wrap justify-around py-[60px]  bg-[#efefef] mb-[70px]'>
-                <div className='flex flex-col w-1/2 lg:w-[33%] max-w-[352px] '>
-                  <h3 className='text-[#292929] text-lg mb-7'>
+                <div className='flex flex-col justify-center w-full sm:w-1/2 lg:w-[33%] max-w-[352px] px-5 sm:px-0 mb-10 sm:mb-0'>
+                  <h3 className='text-[#292929] text-center sm:text-left text-lg mb-7'>
                     TUTORIAL
                   </h3>
-                  <p className='text-4xl font-medium mb-[70px]'>
+                  <p className='text-4xl font-medium mb-10 sm:mb-[70px]'>
                     Let's look at 7 ways
                     to use motion trend
                     more effectively
                     in the first tutorial.
                   </p>
-                  <Button />
+                  <div className='self-center	sm:self-start'>
+                    <Button>watch now</Button>
+                  </div>
                 </div>
-                <div className=' w-1/2 lg:w-[33%] max-w-[526px] h-[298px] relative'>
-                    <video className='w-full h-full' src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
-                    <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 
+                <div className=' w-full sm:w-1/2 lg:w-[33%] max-w-[526px] h-[298px] relative px-5  sm:px-0'>
+                    <div className='relative'>
+                      <video className='w-full h-full' src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+                      <div className='absolute bottom-8 right-4 text-white w-[63px] h-7 bg-[rgba(0,0,0,0.7)] flex justify-center items-center'>
+                        02:33
+                      </div>
+                      <div className='absolute top-4 -left-4 text-white w-[63px] h-7 flex justify-center items-center'>
+                        <img src="https://cdn.zeplin.io/5ea19ccec5f94454ebb7ad5c/assets/C2CB378D-0119-40DE-A32F-057DBE5AF810-optimized.png" alt="" />
+                      </div>
+                      <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 
                     text-white w-20 h-[50px] flex justify-center items-center bg-[rgba(0,0,0,0.7)] cursor-pointer'>
                       <FaPlay />
                     </div>
-                    <div>
-                      02:33
-                    </div>
-                    <div>
-                      live
                     </div>
                 </div>
-                <div className='w-full lg:w-[33%] flex flex-row justify-center mt-10 lg:mt-0 lg:flex-col gap-[15px] px-5 lg:px-0'>
+                <div className='w-full lg:w-[33%] flex flex-col sm:flex-row justify-center mt-10 lg:mt-0 lg:flex-col gap-[15px] px-5 lg:px-0'>
                   <div className='w-full  flex flex-col lg:flex-row gap-5'>
                     <div className='w-full lg:w-[157px] h-[120px] lg:h-[89px]'>
                       <img className='w-full h-full object-fill' src={require('../assets/img/tutorial-img-2_2022-05-13/tutorial-img-2.png')} alt="" />

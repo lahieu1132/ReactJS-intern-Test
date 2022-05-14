@@ -85,3 +85,13 @@
     background-color: rgba(0, 0, 0, 0.5);
 
 }
+.menu-mobile {
+    transform: translateX(-100%);
+    transition: all 0.5s ease;
+    transition-delay: 0.2s;
+}
+
+
+.menu-mobile.active {
+    transform: translateX(0);
+}

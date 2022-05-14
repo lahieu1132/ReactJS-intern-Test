@@ -31,7 +31,7 @@ const Modal = ({ isOpen, close, children }) => {
   if (!isOpen) return null;
   return ReactDOM.createPortal(
     <>
-      <div className="fixed top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.7)] flex justify-center items-center z-50">
+      <div className="fixed top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.7)] z-30">
           {children}
       </div>
       <ScrollDisabler />

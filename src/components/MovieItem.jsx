@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Modal from './Modal';
 import Button from './Button';
 import {AiOutlineHeart} from 'react-icons/ai'
-import {FaUser, FaPlay} from 'react-icons/fa'
+import {FaUser, FaPlay, FaBars} from 'react-icons/fa'
 import {TiCancel} from 'react-icons/ti'
 import {HiOutlineFolderAdd} from 'react-icons/hi'
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,6 +17,7 @@ function MovieItem({movie}) {
   const modalRef = useRef(null)
   const navigationPrevRef = useRef(null)
   const navigationNextRef = useRef(null)
+  const [showBtn, setShowBtn] = useState(false)
 
   const checkMovieTitle = (title) => {
     return title.split(" ").length < 5 ? title : title.split(" ").slice(0,5).join(' ') + '...'
@@ -58,10 +59,10 @@ function MovieItem({movie}) {
         </div>
       </div>
       <Modal isOpen={isOpen} close={() => setOpen(false)} >
-            <div ref={modalRef} onClick={(e)=> e.stopPropagation()} className='movie-modal bg-white h-screen w-[90%] max-w-[1540px]  overflow-y-scroll'>
+            <div ref={modalRef} onClick={(e)=> e.stopPropagation()} className='movie-modal bg-white h-screen w-[90%] max-w-[1540px] mx-auto overflow-x-hidden overflow-y-scroll'>
             <div className=' pt-10 mb-[70px] px-[50px]'>
-              <div className='flex flex-row justify-between items-end mb-[52px]'>
-                <div className='flex flex-row gap-[31px]'>
+              <div className='flex flex-col  md:flex-row justify-between items-start md:items-end mb-[52px]'>
+                <div className='flex flex-col items-center md:flex-row gap-[31px]'>
                   <div className='w-[109px] h-[109px] overflow-hidden rounded-full'>
                     <img src={require('../assets/img/upload-my-profile-1_2022-05-14/upload-my-profile-1.png')} alt="" />
                   </div>
@@ -69,11 +70,18 @@ function MovieItem({movie}) {
                     <h2 className='mb-[9px] text-primary text-3xl leading-5 font-medium'>
                       The first portfolio movement.
                     </h2>
-                    <div className='mb-5 flex flex-row gap-[31px]'>
+                    <div className='mb-5 flex flex-col md:flex-row gap-3 md:gap-[31px]'>
                       <h3 className='text-primary text-base font-light'>Kim Aeyong</h3>
                       <p className='text-small text-base font-light ' >Design, Music Video, Advertising</p>
                     </div>
-                    <div className='flex flex-row gap-1'>
+                    <div className='md:hidden h-10 w-10 flex justify-center items-center rounded-full text-3xl hover:bg-slate-200'
+                      onClick={(e)=>{
+                        setShowBtn(!showBtn)
+                      }}
+                    >
+                      <FaBars />
+                    </div>
+                    <div className={`${!showBtn && 'hidden'} flex flex-col md:flex-row gap-1`}>
                       <Button >
                         <AiOutlineHeart  />
                         Like
@@ -89,7 +97,7 @@ function MovieItem({movie}) {
                     </div>
                   </div>
                 </div>
-                <div>
+                <div className={`${!showBtn && 'hidden'} mt-1`}>
                   <Button >
                     Edit project
                   </Button>
@@ -158,7 +166,7 @@ function MovieItem({movie}) {
                 </div>
 
                 <Swiper
-          slidesPerView={2}
+          slidesPerView={1}
           spaceBetween={15}
           slidesPerGroup={1}
           loop={true}
@@ -211,8 +219,8 @@ function MovieItem({movie}) {
             </div>
                 </Swiper>
               </div>
-              <div className=' flex flex-row '>
-                  <div className='w-[75%] pt-[50px] px-[50px] border-r border-solid border-divide pb-[85px]'>
+              <div className=' flex flex-col-reverse md:flex-row '>
+                  <div className='w-full md:w-[75%] pt-[50px] px-[50px] border-r border-solid border-divide pb-[85px]'>
                     <div>
                       <p className='text-black-three text-xl font-medium mb-5'>Comments</p>
                       <form className='mb-10 border border-primary border-solid h-10 flex flex-row items-center '>
@@ -293,7 +301,7 @@ function MovieItem({movie}) {
                       More comments
                     </div>
                   </div>
-                  <div className='w-[439px]'>
+                  <div className='w-full md:w-[439px]'>
                       <div className='pb-10  pt-[50px] px-[50px] border-b border-solid border-divide '>
                         <p className='text-small text-xs font-light'>Owner</p>
                         <div className='flex flex-row items-center gap-4'>

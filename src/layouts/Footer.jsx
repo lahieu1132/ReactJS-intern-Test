@@ -6,6 +6,9 @@ import {BsYoutube} from 'react-icons/bs'
 
 
 function Footer() {
+    
+
+
   return (
     <div >
         <div className='flex flex-col sm:flex-row gap-2 justify-between items-center min-h-[40px] bg-primary px-5 py-2 sm:py-0'>
