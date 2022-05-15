@@ -170,7 +170,7 @@ function HomePage() {
 
           <div className='mt-[60px] px-5'>
             <div className='flex flex-row justify-between mb-7'>
-              <ul className='flex flex-row gap-[31px]'>
+              <ul className='flex flex-col md:flex-ro gap-2 md:gap-[31px]'>
                 {
                   Options.map((item, index) => (
                     <li key={index} ref={el => itemRef.current[index] = el}
@@ -218,7 +218,7 @@ function HomePage() {
                   <h3 className='text-[#292929] text-center sm:text-left text-lg mb-7'>
                     TUTORIAL
                   </h3>
-                  <p className='text-4xl font-medium mb-10 sm:mb-[70px]'>
+                  <p className='text-3xl md:text-4xl font-medium mb-10 sm:mb-[70px]'>
                     Let's look at 7 ways
                     to use motion trend
                     more effectively

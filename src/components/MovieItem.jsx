@@ -17,7 +17,7 @@ function MovieItem({movie}) {
   const modalRef = useRef(null)
   const navigationPrevRef = useRef(null)
   const navigationNextRef = useRef(null)
-  const [showBtn, setShowBtn] = useState(false)
+  const [showBtn, setShowBtn] = useState(true)
 
   const checkMovieTitle = (title) => {
     return title.split(" ").length < 5 ? title : title.split(" ").slice(0,5).join(' ') + '...'
@@ -50,7 +50,7 @@ function MovieItem({movie}) {
         </div>
         <img className='w-full h-full object-fill' src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt="" />
       </div>
-      <div className='flex flex-row items-center justify-between'>
+      <div className='flex flex-col items-start sm:flex-row sm:items-center justify-between'>
         <div className='flex flex-row items-center gap-[5px]'>
           <div className='w-4 h-4'>
             <img src={require('../assets/icon/profile-img-2_2022-05-12/profile-img-2@2x.png')} alt="" />
