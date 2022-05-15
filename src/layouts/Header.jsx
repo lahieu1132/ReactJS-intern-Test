@@ -68,7 +68,7 @@ function Header() {
         onClick={(e)=> e.stopPropagation()}
       >
         <input
-          className='pl-[26px] w-full text-base text-white placeholder:text-sm placeholder:text-white bg-transparent border-none outline-none'
+          className='lg:pl-[26px] w-full text-base text-white placeholder:text-sm placeholder:text-white bg-transparent border-none outline-none'
         type="text" placeholder='Search for motion trend......' name="" id="" />
       </div>
 

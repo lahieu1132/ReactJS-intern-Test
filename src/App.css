@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&display=swap');
+
 
 @layer base {
     :root {
@@ -15,7 +17,7 @@
 
 
 * {
-    font-family: 'Montserrat','Extrabold', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 .movie-modal::-webkit-scrollbar {
     display: none;

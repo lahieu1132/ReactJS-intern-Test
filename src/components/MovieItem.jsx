@@ -1,4 +1,4 @@
-import React,{useState, useRef} from 'react'
+import React,{useState, useRef, useEffect} from 'react'
 import {AiFillHeart} from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import Modal from './Modal';
@@ -24,6 +24,16 @@ function MovieItem({movie}) {
   }
   const lastMovies = new Set([1,2,3,4,5])
 
+  useEffect(()=>{
+    const resize = () => {
+      if(window.innerWidth > 768) setShowBtn(true) 
+      else setShowBtn(false)
+    }
+
+    window.addEventListener('resize', resize)
+
+    return ()=> window.removeEventListener('resize', resize)
+  },[])
 
   // console.log(movie)
   return (
@@ -107,7 +117,7 @@ function MovieItem({movie}) {
               <div className='relative mb-10'>
                 <video className='w-full h-full' src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
                 <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 
-                text-white text-3xl w-[129px] h-[78px] flex justify-center items-center bg-[rgba(0,0,0,0.7)] cursor-pointer'>
+                text-white md:text-3xl text-xl w-20 h-12 md:w-[129px] md:h-[78px] flex justify-center items-center bg-[rgba(0,0,0,0.7)] cursor-pointer'>
                   <FaPlay />
                 </div>
               </div>
