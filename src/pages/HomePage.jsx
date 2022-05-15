@@ -170,7 +170,7 @@ function HomePage() {
 
           <div className='mt-[60px] px-5'>
             <div className='flex flex-row justify-between mb-7'>
-              <ul className='flex flex-col md:flex-ro gap-2 md:gap-[31px]'>
+              <ul className='flex flex-col md:flex-row gap-2 md:gap-[31px]'>
                 {
                   Options.map((item, index) => (
                     <li key={index} ref={el => itemRef.current[index] = el}
